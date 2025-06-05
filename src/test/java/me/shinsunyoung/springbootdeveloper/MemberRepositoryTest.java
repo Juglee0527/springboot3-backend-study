@@ -33,4 +33,14 @@ class MemberRepositoryTest {
         //then
         assertThat(member.getName()).isEqualTo("B");
     }
+
+    @Sql("/insert-members.sql")
+    @Test
+    void getMemberByName() {
+        //when
+        Member member = memberRepository.findByName("C").get();
+
+        //then
+        assertThat(member.getId()).isEqualTo(3);
+    }
 }
